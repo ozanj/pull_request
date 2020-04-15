@@ -30,3 +30,18 @@ ggplot(data = df_boulder, mapping = aes(x = total_students, y = avgmedian_inc_25
 
 #close file
 dev.off()
+
+#6. Facet the previous subplot by school type
+
+getwd()
+list.files()
+#open png file  
+png("plots/scatterplot_facet.png")
+
+#create plot
+ggplot(data = df_boulder, mapping = aes(x = total_students, y = avgmedian_inc_2564, color = as.factor(visited))) + geom_point() +
+  xlab("Total students") + ylab("Avg. median income") + scale_color_discrete(name = "Legend", labels = c("No visit", "Visits")) +
+  facet_wrap(~ school_type)
+
+#close file
+dev.off()
